@@ -1,0 +1,9 @@
+pynest-api
+fastapi
+uvicorn[standard]
+jinja2
+python-multipart
+qrcode[pil]
+pillow
+python-magic
+aiofiles

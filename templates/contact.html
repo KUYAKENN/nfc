@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ contact.full_name }} - Contact</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin: 0 auto 15px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-placeholder {
+            font-size: 48px;
+            color: #6c757d;
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .title {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .company {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            padding: 30px 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        .info-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            color: #3498db;
+        }
+
+        .info-content {
+            flex: 1;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .info-value {
+            font-size: 16px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .actions {
+            padding: 0 20px 30px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-secondary {
+            background: #ecf0f1;
+            color: #2c3e50;
+            border: 1px solid #bdc3c7;
+        }
+
+        .btn-secondary:hover {
+            background: #d5dbdb;
+            transform: translateY(-2px);
+        }
+
+        .qr-section {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+        }
+
+        .qr-code {
+            max-width: 150px;
+            height: auto;
+            margin: 10px auto;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 480px) {
+            .contact-card {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 25px 15px;
+            }
+            
+            .profile-image {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .name {
+                font-size: 20px;
+            }
+            
+            .contact-info {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-card">
+        <div class="header">
+            {% if contact.company %}
+            <div class="company-logo">
+                QS
+            </div>
+            {% endif %}
+            
+            <div class="profile-image">
+                {% if contact.profile_image_path %}
+                    <img src="{{ base_url }}/static/profile.jpg" alt="{{ contact.full_name }}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="profile-placeholder" style="display: none;">👤</div>
+                {% else %}
+                    <div class="profile-placeholder">👤</div>
+                {% endif %}
+            </div>
+            
+            <div class="name">{{ contact.full_name }}</div>
+            {% if contact.title %}
+            <div class="title">{{ contact.title }}</div>
+            {% endif %}
+            {% if contact.company %}
+            <div class="company">{{ contact.company }}</div>
+            {% endif %}
+        </div>
+
+        <div class="contact-info">
+            <div class="info-item">
+                <div class="info-icon">📱</div>
+                <div class="info-content">
+                    <div class="info-label">Phone</div>
+                    <div class="info-value">{{ contact.phone_number }}</div>
+                </div>
+            </div>
+
+            {% if contact.email %}
+            <div class="info-item">
+                <div class="info-icon">✉️</div>
+                <div class="info-content">
+                    <div class="info-label">Email</div>
+                    <div class="info-value">{{ contact.email }}</div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if contact.website %}
+            <div class="info-item">
+                <div class="info-icon">🌐</div>
+                <div class="info-content">
+                    <div class="info-label">Website</div>
+                    <div class="info-value">{{ contact.website }}</div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="actions">
+            <a href="{{ base_url }}/contact/vcard" class="btn btn-primary" download>
+                💾 Save to Contacts
+            </a>
+            
+            <a href="tel:{{ contact.phone_number }}" class="btn btn-secondary">
+                📞 Call Now
+            </a>
+
+            {% if contact.email %}
+            <a href="mailto:{{ contact.email }}" class="btn btn-secondary">
+                📧 Send Email
+            </a>
+            {% endif %}
+
+            <div class="qr-section">
+                <p style="color: #6c757d; font-size: 14px; margin-bottom: 10px;">
+                    Share this contact
+                </p>
+                <img src="{{ base_url }}/contact/qr" alt="QR Code" class="qr-code">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers for phone and email
+            const phoneItems = document.querySelectorAll('.info-item');
+            phoneItems.forEach(item => {
+                const icon = item.querySelector('.info-icon');
+                if (icon && icon.textContent === '📱') {
+                    item.style.cursor = 'pointer';
+                    item.addEventListener('click', function() {
+                        const phone = item.querySelector('.info-value').textContent;
+                        window.location.href = `tel:${phone}`;
+                    });
+                }
+                
+                if (icon && icon.textContent === '✉️') {
+                    item.style.cursor = 'pointer';
+                    item.addEventListener('click', function() {
+                        const email = item.querySelector('.info-value').textContent;
+                        window.location.href = `mailto:${email}`;
+                    });
+                }
+            });
+
+            // Add animation to the card
+            const card = document.querySelector('.contact-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'all 0.6s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
