@@ -7,7 +7,7 @@ from nest.core import Controller, Get, Post
 from .contact_service import ContactService
 
 
-@Controller("/contact")
+@Controller("/nfc/contact")
 class ContactController:
     """Controller for NFC contact sharing functionality"""
     
@@ -114,7 +114,7 @@ class ContactController:
         """Generate QR code for the contact page URL"""
         try:
             # Create QR code pointing to the contact page
-            contact_url = f"{str(request.base_url).rstrip('/')}/contact"
+            contact_url = f"{str(request.base_url).rstrip('/')}/nfc/contact"
             
             qr = qrcode.QRCode(
                 version=1,

@@ -228,7 +228,7 @@
             
             <div class="profile-image">
                 {% if contact.profile_image_path %}
-                    <img src="{{ base_url }}/static/profile.jpg" alt="{{ contact.full_name }}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <img src="{{ base_url }}/nfc/static/profile.jpg" alt="{{ contact.full_name }}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="profile-placeholder" style="display: none;">👤</div>
                 {% else %}
                     <div class="profile-placeholder">👤</div>
@@ -275,7 +275,7 @@
         </div>
 
         <div class="actions">
-            <a href="{{ base_url }}/contact/vcard" class="btn btn-primary" download>
+            <a href="{{ base_url }}/nfc/contact/vcard" class="btn btn-primary" download>
                 💾 Save to Contacts
             </a>
             
@@ -293,7 +293,7 @@
                 <p style="color: #6c757d; font-size: 14px; margin-bottom: 10px;">
                     Share this contact
                 </p>
-                <img src="{{ base_url }}/contact/qr" alt="QR Code" class="qr-code">
+                <img src="{{ base_url }}/nfc/contact/qr" alt="QR Code" class="qr-code">
             </div>
         </div>
     </div>

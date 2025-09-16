@@ -30,29 +30,29 @@ This application creates an NFC-enabled contact sharing system that allows users
    ```bash
    python main.py
    ```
-   The app will run on `http://localhost:5001`
+   The app will run on `http://localhost:5002`
 
 ## NFC Setup
 
 ### For NFC Tags:
 1. Use an NFC writing app on your phone
-2. Write the URL: `http://YOUR_SERVER_IP:5001/contact`
+2. Write the URL: `http://YOUR_SERVER_IP:5002/nfc/contact`
 3. When someone taps the NFC tag, they'll be directed to your contact page
 
 ### For Testing:
-- Visit `http://localhost:5001/contact` to see the contact page
-- Visit `http://localhost:5001/contact/vcard` to download the vCard
-- Visit `http://localhost:5001/contact/qr` to see the QR code
+- Visit `http://localhost:5002/nfc/contact` to see the contact page
+- Visit `http://localhost:5002/nfc/contact/vcard` to download the vCard
+- Visit `http://localhost:5002/nfc/contact/qr` to see the QR code
 
 ## API Endpoints
 
-- `GET /contact/` - Contact page with profile picture
-- `GET /contact/vcard` - Download vCard file
-- `GET /contact/qr` - Generate QR code for contact URL
-- `GET /contact/info` - JSON contact information
-- `POST /contact/update` - Update contact information
-- `POST /contact/upload-image` - Upload new profile image
-- `GET /static/{filename}` - Serve static files (images)
+- `GET /nfc/contact/` - Contact page with profile picture
+- `GET /nfc/contact/vcard` - Download vCard file
+- `GET /nfc/contact/qr` - Generate QR code for contact URL
+- `GET /nfc/contact/info` - JSON contact information
+- `POST /nfc/contact/update` - Update contact information
+- `POST /nfc/contact/upload-image` - Upload new profile image
+- `GET /nfc/static/{filename}` - Serve static files (images)
 
 ## How It Works
 
@@ -94,4 +94,4 @@ For production deployment:
 
 - **Import Errors**: Make sure all dependencies are installed with `pip install -r requirements.txt`
 - **Profile Image Not Showing**: Ensure `static/profile.jpg` exists and is accessible
-- **Port Conflicts**: The app runs on port 5001 by default. Change the port in `main.py` if needed
+- **Port Conflicts**: The app runs on port 5002 by default. Change the port in `main.py` if needed

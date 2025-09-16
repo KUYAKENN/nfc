@@ -4,7 +4,7 @@ from fastapi.responses import FileResponse
 from nest.core import Controller, Get
 
 
-@Controller("/static")
+@Controller("/nfc/static")
 class StaticController:
     """Controller for serving static files like images"""
     
