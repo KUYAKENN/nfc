@@ -424,7 +424,7 @@
                 // Create and trigger download
                 const link = document.createElement('a');
                 link.href = downloadUrl;
-                link.download = '{{ contact.full_name.replace(" ", "_") }}.vcf';
+                link.download = 'Chrisma_Maxwell_Contact.vcf';
                 link.style.display = 'none';
                 document.body.appendChild(link);
                 link.click();
@@ -441,7 +441,7 @@
             // Create temporary link and trigger download
             const link = document.createElement('a');
             link.href = downloadUrl;
-            link.download = '{{ contact.full_name.replace(" ", "_") }}.vcf';
+            link.download = 'Chrisma_Maxwell_Contact.vcf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -498,7 +498,7 @@
                 font-family: inherit;
                 font-size: 14px;
             `;
-            message.textContent = '💾 Contact downloaded! Open the {{ contact.full_name.replace(" ", "_") }}.vcf file to save to your contacts.';
+            message.textContent = '💾 Contact downloaded! Open the Chrisma_Maxwell_Contact.vcf file to save to your contacts.';
             
             document.body.appendChild(message);
             
