@@ -192,3 +192,21 @@ class ContactController:
             }
         except Exception as e:
             raise HTTPException(status_code=400, detail=f"Error uploading image: {str(e)}")
+
+    @Get("/download")
+    def download_contact(self):
+        """Download contact as vCard file"""
+        contact = self.contact_service.get_contact_info()
+        vcard_content = contact.to_vcard()
+        
+        # Create filename from contact name
+        filename = f"{contact.first_name}_{contact.last_name}_contact.vcf"
+        
+        return Response(
+            content=vcard_content,
+            media_type="text/vcard",
+            headers={
+                "Content-Disposition": f"attachment; filename={filename}",
+                "Content-Type": "text/vcard; charset=utf-8"
+            }
+        )

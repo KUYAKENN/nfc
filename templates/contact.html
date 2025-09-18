@@ -240,7 +240,39 @@
             margin-right: 8px;
         }
 
-        /* QR Code section */
+        /* Logo section styling */
+        .logo-section {
+            padding: 30px;
+            background: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .company-logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .company-tagline {
+            flex: 1;
+        }
+
+        .tagline-text {
+            font-size: 16px;
+            color: #1a4b73;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .tagline-subtitle {
+            font-size: 12px;
+            color: #666;
+            margin: 2px 0 0 0;
+        }
         .qr-section {
             text-align: center;
             padding: 30px;
@@ -314,7 +346,7 @@
                         📞
                     </div>
                     <div class="contact-details">
-                        <div class="contact-label">Work</div>
+                        <div class="contact-label">Phone Number</div>
                         <div class="contact-value">
                             <a href="tel:{{ contact.phone_number }}">{{ contact.phone_number }}</a>
                         </div>
@@ -328,7 +360,7 @@
                         📧
                     </div>
                     <div class="contact-details">
-                        <div class="contact-label">Work</div>
+                        <div class="contact-label">Email</div>
                         <div class="contact-value">
                             <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
                         </div>
@@ -355,17 +387,18 @@
 
         <!-- Action Buttons -->
         <div class="actions">
-            <a href="{{ base_url }}/nfc/contact/download" class="btn btn-primary">
+            <button onclick="addToContacts()" class="btn btn-primary">
                 <span class="btn-icon">+</span> Add to Contacts
-            </a>
-            <a href="tel:{{ contact.phone_number }}" class="btn btn-secondary">
-                <span class="btn-icon">📞</span> Call Now
-            </a>
-            {% if contact.email %}
-            <a href="mailto:{{ contact.email }}" class="btn btn-secondary">
-                <span class="btn-icon">📧</span> Send Email
-            </a>
-            {% endif %}
+            </button>
+        </div>
+
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <img src="{{ base_url }}/nfc/static/logo.png" alt="Company Logo" class="company-logo-img" onerror="this.style.display='none';">
+            <div class="company-tagline">
+                <p class="tagline-text">Your IT Solutions Partner</p>
+                <p class="tagline-subtitle">Trusted Technology Services</p>
+            </div>
         </div>
 
         <!-- QR Code Section -->
@@ -374,5 +407,73 @@
             <img src="{{ base_url }}/nfc/contact/qr" alt="QR Code" class="qr-code">
         </div>
     </div>
+
+    <script>
+        async function addToContacts() {
+            // Try modern Contact Picker API first (if supported)
+            if ('contacts' in navigator && 'ContactsManager' in window) {
+                try {
+                    // This is experimental and requires user permission
+                    const contact = {
+                        name: '{{ contact.full_name }}',
+                        tel: '{{ contact.phone_number }}',
+                        email: '{{ contact.email }}',
+                        organization: '{{ contact.company }}',
+                        title: '{{ contact.title }}',
+                        address: '{{ contact.address }}'
+                    };
+                    
+                    // Note: This API is still experimental and limited
+                    alert('Contact information copied. Please save manually in your contacts app.');
+                    return;
+                } catch (error) {
+                    console.log('Contact API not supported:', error);
+                }
+            }
+            
+            // Fallback: Download vCard file
+            const downloadUrl = '{{ base_url }}/nfc/contact/download';
+            
+            // Create temporary link and trigger download
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = '{{ contact.full_name }}_contact.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show user-friendly message
+            showContactMessage();
+        }
+        
+        function showContactMessage() {
+            // Create and show a temporary message
+            const message = document.createElement('div');
+            message.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #1a4b73;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 1000;
+                font-family: inherit;
+                font-size: 14px;
+            `;
+            message.textContent = 'Contact file downloaded! Open it to add to your contacts.';
+            
+            document.body.appendChild(message);
+            
+            // Remove message after 3 seconds
+            setTimeout(() => {
+                if (message.parentNode) {
+                    message.parentNode.removeChild(message);
+                }
+            }, 3000);
+        }
+    </script>
 </body>
 </html>

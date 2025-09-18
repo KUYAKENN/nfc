@@ -61,12 +61,12 @@ class ContactService:
         self.contact = ContactInfo(
             first_name="Maria Crisma",
             last_name="Maxwell",
-            phone_number="+1-555-0123",
-            email="maria.maxwell@quanby.com",
+            phone_number="+63-928-310-5224",
+            email="maria@quanbyit.com",
             company="QUANBY Solutions, Inc.",
             address="1862-B Dominga Street Pasay City",
             title="Chief Executive Officer",
-            website="https://quanby.com",
+            website="https://quanbyit.com",
             profile_image_path="static/profile.png"
         )
     
