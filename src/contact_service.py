@@ -15,6 +15,7 @@ class ContactInfo:
     email: Optional[str] = None
     company: Optional[str] = None
     title: Optional[str] = None
+    address: Optional[str] = None
     website: Optional[str] = None
     profile_image_path: Optional[str] = None
 
@@ -41,6 +42,9 @@ class ContactInfo:
         if self.title:
             vcard_lines.append(f"TITLE:{self.title}")
         
+        if self.address:
+            vcard_lines.append(f"ADR:;;{self.address};;;;")
+        
         if self.website:
             vcard_lines.append(f"URL:{self.website}")
         
@@ -60,9 +64,10 @@ class ContactService:
             phone_number="+1-555-0123",
             email="maria.maxwell@quanby.com",
             company="QUANBY Solutions, Inc.",
-            title="Chief Executive Officer / DPO / Procurement Manager",
+            address="1862-B Dominga Street Pasay City",
+            title="Chief Executive Officer",
             website="https://quanby.com",
-            profile_image_path="static/profile.jpg"
+            profile_image_path="static/profile.png"
         )
     
     def get_contact_info(self) -> ContactInfo:

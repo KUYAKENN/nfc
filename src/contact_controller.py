@@ -32,6 +32,7 @@ class ContactController:
             html_content = html_content.replace("{{ contact.email }}", contact.email or "")
             html_content = html_content.replace("{{ contact.company }}", contact.company or "")
             html_content = html_content.replace("{{ contact.title }}", contact.title or "")
+            html_content = html_content.replace("{{ contact.address }}", contact.address or "")
             html_content = html_content.replace("{{ contact.website }}", contact.website or "")
             html_content = html_content.replace("{{ base_url }}", base_url)
             

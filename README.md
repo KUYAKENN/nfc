@@ -75,7 +75,7 @@ self.contact = ContactInfo(
     company="Your Company",
     title="Your Title",
     website="https://yourwebsite.com",
-    profile_image_path="static/profile.jpg"
+    profile_image_path="static/profile.png"
 )
 ```
 

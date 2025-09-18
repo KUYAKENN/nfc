@@ -9,7 +9,8 @@ class StaticController:
     """Controller for serving static files like images"""
     
     def __init__(self):
-        self.static_dir = "static"
+        # Use absolute path to ensure we find the static directory
+        self.static_dir = os.path.abspath("static")
     
     @Get("/{filename}")
     def serve_static_file(self, filename: str):
@@ -17,7 +18,12 @@ class StaticController:
         file_path = os.path.join(self.static_dir, filename)
         
         if not os.path.exists(file_path):
-            raise HTTPException(status_code=404, detail="File not found")
+            # Try current directory as fallback
+            fallback_path = os.path.join("static", filename)
+            if os.path.exists(fallback_path):
+                file_path = fallback_path
+            else:
+                raise HTTPException(status_code=404, detail=f"File not found")
         
         # Determine media type based on file extension
         _, ext = os.path.splitext(filename)

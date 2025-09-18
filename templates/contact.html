@@ -14,678 +14,365 @@
         html, body {
             height: 100%;
             width: 100%;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-            border: 0;
-            outline: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            background-attachment: fixed;
+            background: #f5f5f5;
         }
 
         .contact-card {
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-            overflow-y: auto;
-            overflow-x: hidden;
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            max-width: 400px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            min-height: calc(100vh - 40px);
             display: flex;
             flex-direction: column;
-            margin: 0;
-            padding: 0;
-            border: 0;
-            border-radius: 0;
-            box-shadow: none;
-            animation: slideInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        @keyframes slideInUp {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        /* Blue header section */
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 6vh 5vw;
-            text-align: center;
+            background: #1a4b73;
             color: white;
+            padding: 40px 30px;
+            text-align: left;
             position: relative;
             flex-shrink: 0;
-            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
-            pointer-events: none;
         }
 
         .company-logo {
-            width: min(18vw, 90px);
-            height: min(18vw, 90px);
-            background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
-            border-radius: 50%;
-            margin: 0 auto 3vh;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .profile-section {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 28px;
             font-weight: 700;
-            color: #667eea;
-            font-size: clamp(16px, 4.5vw, 24px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4), 
-                        inset 0 2px 4px rgba(255, 255, 255, 0.8);
-            animation: pulse 2s infinite, fadeInUp 1s ease-out 0.4s both;
-            border: 3px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 8px;
+            line-height: 1.2;
+            color: white;
+        }
+
+        .profile-pronouns {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 12px;
+            font-style: italic;
+            color: white;
+        }
+
+        .profile-title {
+            font-size: 16px;
+            line-height: 1.4;
+            margin-bottom: 6px;
+            opacity: 0.9;
+            color: white;
+        }
+
+        .profile-company {
+            font-size: 14px;
+            opacity: 0.8;
+            color: white;
+        }
+
+        .profile-address {
+            font-size: 13px;
+            opacity: 0.7;
+            color: white;
+            margin-top: 8px;
+            line-height: 1.3;
+        }
+
+        .profile-image-container {
+            position: relative;
+            flex-shrink: 0;
         }
 
         .profile-image {
-            width: min(30vw, 160px);
-            height: min(30vw, 160px);
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            margin: 0 auto 4vh;
-            background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 
-                        0 5px 15px rgba(0, 0, 0, 0.05);
-            animation: fadeInUp 1.2s ease-out 0.6s both;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-image:hover {
-            transform: scale(1.05);
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
+            border: 3px solid rgba(255, 255, 255, 0.2);
             object-fit: cover;
+            display: block;
         }
 
-        .profile-placeholder {
-            font-size: clamp(28px, 10vw, 64px);
-            color: #94a3b8;
-            opacity: 0.7;
-        }
-
-        .name {
-            font-size: clamp(24px, 6vw, 32px);
+        .profile-initials {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
             font-weight: 700;
-            margin-bottom: 1vh;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 1.4s ease-out 0.8s both;
-            letter-spacing: -0.02em;
+            color: white;
         }
 
-        .title {
-            font-size: clamp(14px, 3.8vw, 18px);
-            opacity: 0.95;
-            margin-bottom: 1vh;
-            animation: fadeInUp 1.6s ease-out 1s both;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-        }
-
-        .company {
-            font-size: clamp(16px, 4.2vw, 20px);
-            font-weight: 600;
-            animation: fadeInUp 1.8s ease-out 1.2s both;
-            letter-spacing: 0.01em;
-        }
-
-        .contact-info {
-            padding: 4vh 0;
+        /* Content section */
+        .content {
             flex: 1;
-            overflow-y: auto;
-            background: linear-gradient(to bottom, rgba(248, 250, 252, 0.8), rgba(241, 245, 249, 0.4));
+            padding: 40px 30px;
+            background: white;
         }
 
-        .info-item {
+        .tagline {
+            font-size: 16px;
+            color: #1a4b73;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .contact-methods {
+            space-y: 20px;
+        }
+
+        .contact-item {
             display: flex;
             align-items: center;
-            margin: 3vh 4vw 2vh;
-            padding: 4vh 5vw;
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 20px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 
-                        0 10px 25px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 0.6s ease-out both;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
         }
 
-        .info-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
+        .contact-item:last-child {
+            border-bottom: none;
         }
 
-        .info-item:hover::before {
-            left: 100%;
-        }
-
-        .info-item:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.15), 
-                        0 8px 15px rgba(0, 0, 0, 0.1);
-            border-color: rgba(102, 126, 234, 0.3);
-        }
-
-        .info-item:nth-child(1) { animation-delay: 0.1s; }
-        .info-item:nth-child(2) { animation-delay: 0.2s; }
-        .info-item:nth-child(3) { animation-delay: 0.3s; }
-
-        .info-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .info-icon {
-            width: min(8vw, 40px);
-            height: min(8vw, 40px);
-            margin-right: 5vw;
-            font-size: clamp(20px, 6vw, 28px);
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            color: #1a4b73;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            color: white;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-            animation: pulse 2s infinite;
         }
 
-        .info-content {
+        .contact-details {
             flex: 1;
         }
 
-        .info-label {
-            font-size: clamp(11px, 3vw, 15px);
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.8vh;
-            font-weight: 600;
+        .contact-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 2px;
         }
 
-        .info-value {
-            font-size: clamp(16px, 4vw, 20px);
-            color: #1e293b;
-            font-weight: 600;
-            word-break: break-all;
-            line-height: 1.4;
+        .contact-value {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
         }
 
+        .contact-value a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .contact-value a:hover {
+            color: #1a4b73;
+        }
+
+        /* Action buttons */
         .actions {
-            padding: 3vh 0 4vh;
-            flex-shrink: 0;
-            background: linear-gradient(to top, rgba(248, 250, 252, 0.9), transparent);
+            padding: 30px;
+            background: white;
         }
 
         .btn {
             display: block;
-            width: calc(100% - 8vw);
-            padding: 4vh 6vw;
-            border: none;
-            border-radius: 20px;
-            font-size: clamp(16px, 4vw, 20px);
-            font-weight: 700;
-            text-decoration: none;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            margin: 2vh 4vw;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: 0.5px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 0.6s ease-out both;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
         }
 
-        .btn:hover::before {
-            left: 100%;
+        .btn:last-child {
+            margin-bottom: 0;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a4b73;
             color: white;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-            animation-delay: 0.1s;
         }
 
         .btn-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4), 
-                        0 8px 15px rgba(102, 126, 234, 0.2);
+            background: #164061;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 75, 115, 0.3);
         }
 
         .btn-secondary {
-            background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
-            color: #475569;
-            border: 2px solid rgba(102, 126, 234, 0.2);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background: white;
+            color: #1a4b73;
+            border: 2px solid #1a4b73;
         }
 
         .btn-secondary:hover {
-            background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-            border-color: rgba(102, 126, 234, 0.4);
+            background: #1a4b73;
+            color: white;
         }
 
-        .btn-secondary:nth-child(2) { animation-delay: 0.2s; }
-        .btn-secondary:nth-child(3) { animation-delay: 0.3s; }
+        .btn-icon {
+            margin-right: 8px;
+        }
 
+        /* QR Code section */
         .qr-section {
             text-align: center;
-            margin: 3vh 4vw 4vh;
-            padding: 5vh 4vw;
-            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 25px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), 
-                        inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-            position: relative;
-            overflow: hidden;
+            padding: 30px;
+            background: #f8f9fa;
+            border-top: 1px solid #e9ecef;
         }
 
-        .qr-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.05) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .qr-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
         }
 
         .qr-code {
-            max-width: min(45vw, 220px);
+            max-width: 120px;
             height: auto;
-            margin: 3vh auto;
-            border-radius: 20px;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease;
-            position: relative;
-            z-index: 1;
+            margin: 0 auto;
+            border-radius: 8px;
         }
 
-        .qr-code:hover {
-            transform: scale(1.05);
-        }
-
-        /* Responsive Design for different screen sizes */
+        /* Responsive design */
         @media (max-width: 480px) {
-            .header {
-                padding: 5vh 5vw;
-            }
-            
-            .contact-info {
-                padding: 3vh 0;
-            }
-
-            .actions {
-                padding: 3vh 0 5vh;
-            }
-
-            .info-item {
-                padding: 4vh 4vw;
-                margin: 2.5vh 3vw;
-                border-radius: 18px;
-            }
-
-            .btn {
-                padding: 4vh 4vw;
-                margin: 2vh 3vw;
-                width: calc(100% - 6vw);
-                border-radius: 18px;
-            }
-
-            .qr-section {
-                padding: 4vh 3vw;
-                margin: 3vh 3vw 4vh;
-                border-radius: 20px;
-            }
-        }
-
-        @media (min-width: 481px) and (max-width: 768px) {
-            .header {
-                padding: 6vh 4vw;
-            }
-            
-            .info-item {
-                margin: 3vh 3vw;
-                padding: 4vh 4vw;
-            }
-
-            .btn {
-                margin: 2vh 3vw;
-                width: calc(100% - 6vw);
-            }
-
-            .qr-section {
-                margin: 3vh 3vw 4vh;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .header {
-                padding: 6vh 5vw;
-            }
-            
-            .info-item {
-                margin: 3vh 5vw;
-                padding: 4vh 5vw;
-            }
-
-            .btn {
-                margin: 2vh 5vw;
-                width: calc(100% - 10vw);
-            }
-
-            .qr-section {
-                margin: 3vh 5vw 4vh;
-            }
-        }
-
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
             .contact-card {
-                background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
+                margin: 10px;
+                border-radius: 8px;
+                min-height: calc(100vh - 20px);
             }
             
-            .info-item {
-                background: linear-gradient(145deg, #334155 0%, #475569 100%);
-                border-color: rgba(148, 163, 184, 0.3);
+            .header {
+                padding: 30px 20px;
             }
             
-            .info-value {
-                color: #f1f5f9;
+            .content, .actions {
+                padding: 25px 20px;
             }
             
-            .info-label {
-                color: #94a3b8;
-            }
-            
-            .qr-section {
-                background: linear-gradient(145deg, #334155 0%, #475569 100%);
-                border-color: rgba(148, 163, 184, 0.3);
+            .profile-name {
+                font-size: 24px;
             }
         }
     </style>
 </head>
 <body>
     <div class="contact-card">
+        <!-- Blue Header Section -->
         <div class="header">
-            {% if contact.company %}
-            <div class="company-logo">
-                QS
+            <div class="company-logo">{{ contact.company }}</div>
+            <div class="profile-section">
+                <div class="profile-info">
+                    <div class="profile-name">{{ contact.full_name }}</div>
+                    <div class="profile-title">{{ contact.title }}</div>
+                    <div class="profile-address">{{ contact.address }}</div>
+                </div>
+                <div class="profile-image-container">
+                    <img src="{{ base_url }}/nfc/static/profile.png" alt="{{ contact.full_name }}" class="profile-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="profile-initials">QS</div>
+                </div>
             </div>
-            {% endif %}
-            
-            <div class="profile-image">
-                {% if contact.profile_image_path %}
-                    <img src="{{ base_url }}/nfc/static/profile.jpg" alt="{{ contact.full_name }}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="profile-placeholder" style="display: none;">👤</div>
-                {% else %}
-                    <div class="profile-placeholder">👤</div>
+        </div>
+
+        <!-- White Content Section -->
+        <div class="content">
+            <div class="tagline">
+                Creating engaging experiences for customers and building lasting professional relationships.
+            </div>
+
+            <div class="contact-methods">
+                <!-- Phone -->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        📞
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-label">Work</div>
+                        <div class="contact-value">
+                            <a href="tel:{{ contact.phone_number }}">{{ contact.phone_number }}</a>
+                        </div>
+                    </div>
+                </div>
+
+                {% if contact.email %}
+                <!-- Email -->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        📧
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-label">Work</div>
+                        <div class="contact-value">
+                            <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if contact.website %}
+                <!-- Website -->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        🌐
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-label">Company</div>
+                        <div class="contact-value">
+                            <a href="{{ contact.website }}" target="_blank">{{ contact.website }}</a>
+                        </div>
+                    </div>
+                </div>
                 {% endif %}
             </div>
-            
-            <div class="name">{{ contact.full_name }}</div>
-            {% if contact.title %}
-            <div class="title">{{ contact.title }}</div>
-            {% endif %}
-            {% if contact.company %}
-            <div class="company">{{ contact.company }}</div>
-            {% endif %}
         </div>
 
-        <div class="contact-info">
-            <div class="info-item">
-                <div class="info-icon">📱</div>
-                <div class="info-content">
-                    <div class="info-label">Phone</div>
-                    <div class="info-value">{{ contact.phone_number }}</div>
-                </div>
-            </div>
-
-            {% if contact.email %}
-            <div class="info-item">
-                <div class="info-icon">✉️</div>
-                <div class="info-content">
-                    <div class="info-label">Email</div>
-                    <div class="info-value">{{ contact.email }}</div>
-                </div>
-            </div>
-            {% endif %}
-
-            {% if contact.website %}
-            <div class="info-item">
-                <div class="info-icon">🌐</div>
-                <div class="info-content">
-                    <div class="info-label">Website</div>
-                    <div class="info-value">{{ contact.website }}</div>
-                </div>
-            </div>
-            {% endif %}
-        </div>
-
+        <!-- Action Buttons -->
         <div class="actions">
-            <a href="{{ base_url }}/nfc/contact/vcard" class="btn btn-primary" download>
-                💾 Save to Contacts
+            <a href="{{ base_url }}/nfc/contact/download" class="btn btn-primary">
+                <span class="btn-icon">+</span> Add to Contacts
             </a>
-            
             <a href="tel:{{ contact.phone_number }}" class="btn btn-secondary">
-                📞 Call Now
+                <span class="btn-icon">📞</span> Call Now
             </a>
-
             {% if contact.email %}
             <a href="mailto:{{ contact.email }}" class="btn btn-secondary">
-                📧 Send Email
+                <span class="btn-icon">📧</span> Send Email
             </a>
             {% endif %}
+        </div>
 
-            <div class="qr-section">
-                <p style="color: #6c757d; font-size: clamp(12px, 3vw, 16px); margin-bottom: 2vh;">
-                    Share this contact
-                </p>
-                <img src="{{ base_url }}/nfc/contact/qr" alt="QR Code" class="qr-code">
-            </div>
+        <!-- QR Code Section -->
+        <div class="qr-section">
+            <div class="qr-title">Scan to save contact</div>
+            <img src="{{ base_url }}/nfc/contact/qr" alt="QR Code" class="qr-code">
         </div>
     </div>
-
-    <script>
-        // Enhanced interactivity and animations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add click handlers for phone and email with haptic feedback
-            const phoneItems = document.querySelectorAll('.info-item');
-            phoneItems.forEach((item, index) => {
-                const icon = item.querySelector('.info-icon');
-                
-                // Add staggered animation
-                item.style.animationDelay = `${0.1 + index * 0.1}s`;
-                
-                if (icon && icon.textContent === '📱') {
-                    item.addEventListener('click', function() {
-                        const phone = item.querySelector('.info-value').textContent;
-                        // Add visual feedback
-                        item.style.transform = 'scale(0.95)';
-                        setTimeout(() => {
-                            item.style.transform = '';
-                            window.location.href = `tel:${phone}`;
-                        }, 150);
-                    });
-                }
-                
-                if (icon && icon.textContent === '✉️') {
-                    item.addEventListener('click', function() {
-                        const email = item.querySelector('.info-value').textContent;
-                        // Add visual feedback
-                        item.style.transform = 'scale(0.95)';
-                        setTimeout(() => {
-                            item.style.transform = '';
-                            window.location.href = `mailto:${email}`;
-                        }, 150);
-                    });
-                }
-
-                if (icon && icon.textContent === '🌐') {
-                    item.addEventListener('click', function() {
-                        const website = item.querySelector('.info-value').textContent;
-                        // Add visual feedback
-                        item.style.transform = 'scale(0.95)';
-                        setTimeout(() => {
-                            item.style.transform = '';
-                            window.open(website.startsWith('http') ? website : `https://${website}`, '_blank');
-                        }, 150);
-                    });
-                }
-            });
-
-            // Add staggered animation to buttons
-            const buttons = document.querySelectorAll('.btn');
-            buttons.forEach((btn, index) => {
-                btn.style.animationDelay = `${0.5 + index * 0.1}s`;
-                
-                // Add button click effect
-                btn.addEventListener('click', function(e) {
-                    const ripple = document.createElement('span');
-                    const rect = btn.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height);
-                    const x = e.clientX - rect.left - size / 2;
-                    const y = e.clientY - rect.top - size / 2;
-                    
-                    ripple.style.width = ripple.style.height = size + 'px';
-                    ripple.style.left = x + 'px';
-                    ripple.style.top = y + 'px';
-                    ripple.style.position = 'absolute';
-                    ripple.style.borderRadius = '50%';
-                    ripple.style.background = 'rgba(255, 255, 255, 0.6)';
-                    ripple.style.transform = 'scale(0)';
-                    ripple.style.animation = 'ripple 0.6s linear';
-                    ripple.style.pointerEvents = 'none';
-                    
-                    btn.style.position = 'relative';
-                    btn.appendChild(ripple);
-                    
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600);
-                });
-            });
-
-            // Smooth scroll behavior
-            document.querySelector('.contact-info').style.scrollBehavior = 'smooth';
-
-            // Add parallax effect to header on scroll
-            const header = document.querySelector('.header');
-            const contactInfo = document.querySelector('.contact-info');
-            
-            contactInfo.addEventListener('scroll', function() {
-                const scrolled = contactInfo.scrollTop;
-                const rate = scrolled * -0.5;
-                header.style.transform = `translateY(${rate}px)`;
-            });
-
-            // Add entrance animation
-            const card = document.querySelector('.contact-card');
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(50px)';
-            
-            setTimeout(() => {
-                card.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, 100);
-        });
-
-        // Add ripple animation CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-            
-            .info-item, .btn {
-                position: relative;
-                overflow: hidden;
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
 </body>
 </html>
