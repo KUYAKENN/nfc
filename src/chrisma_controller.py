@@ -73,7 +73,18 @@ class ChrismaController:
     @Get("/vcard")
     def download_vcard(self):
         """Download Chrisma's vCard file for adding to phone contacts"""
-        vcard_content = self.contact.to_vcard()
+        # Create vCard content manually to avoid object issues
+        vcard_content = f"""BEGIN:VCARD
+VERSION:3.0
+FN:{self.contact.full_name}
+N:{self.contact.last_name};{self.contact.first_name};;;
+TEL;TYPE=CELL:{self.contact.phone_number}
+EMAIL:{self.contact.email}
+ORG:{self.contact.company}
+TITLE:{self.contact.title}
+ADR:;;{self.contact.address};;;;
+URL:{self.contact.website}
+END:VCARD"""
         
         filename = f"Chrisma_Maxwell_Contact.vcf"
         
