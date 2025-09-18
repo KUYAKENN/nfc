@@ -62,7 +62,7 @@ class ContactService:
             first_name="Maria Crisma",
             last_name="Maxwell",
             phone_number="+63-928-310-5224",
-            email="maria@quanbyit.com",
+            email="chrisma@quanbyit.com",
             company="QUANBY Solutions, Inc.",
             address="1862-B Dominga Street Pasay City",
             title="Chief Executive Officer",
